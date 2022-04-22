@@ -52,20 +52,13 @@ const ThreeAvatar = () => {
 
       const scale = scH * 0.005 + 4.8;
       const camera = new THREE.OrthographicCamera(
-        // -scale,
-        // scale,
-        // scale,
-        // -scale,
-        // 0.01,
-        // 1000
-        -1000,
-        1000,
-        1000,
-        -1000,
+        -scale,
+        scale,
+        scale,
+        -scale,
         0.01,
         1000
       );
-      // const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
       camera.position.copy(initialCameraPosition);
       camera.lookAt(target);
       setCamera(camera);
@@ -76,7 +69,7 @@ const ThreeAvatar = () => {
       const controls = new OrbitControls(camera, renderer.domElement);
       controls.autoRotate = true;
       controls.target = target;
-      controls.enableZoom = true;
+      controls.enableZoom = false;
       setControls(controls);
 
       loadGLTFModel(scene, avatarPath, {

@@ -5,7 +5,6 @@ import Chakra from "../src/components/chakra";
 import Layout from "../src/components/layouts/main";
 import { Provider } from "react-redux";
 import store from "../src/redux/store";
-import Cursor from "../src/components/ui/cursor";
 
 if (typeof window !== "undefined") {
   window.history.scrollRestoration = "manual";

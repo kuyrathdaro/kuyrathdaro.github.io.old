@@ -10,24 +10,24 @@ const LogoBox = styled.span`
   height: 30px;
   line-height: 20px;
   padding: 10px;
+  margin-bottom: 9px;
 
   img {
     transition: 200ms ease;
   }
 
   &:hover img {
-    transform: rotateY(360deg);
+    transform: rotate(20deg);
   }
 `;
 
 const Logo = () => {
-  const dogeCoinImg = "/images/dogecoin.png";
-
+  const logo = `/images/${useColorModeValue(ThemeData.light.logo, ThemeData.dark.logo)}.png`;
   return (
     <Link href="/" scroll={false}>
       <a>
         <LogoBox>
-          <Image src={dogeCoinImg} boxSize={25} alt="logo" />
+          <Image src={logo} boxSize="20px" alt="logo" />
           <Text
             color={useColorModeValue(ThemeData.light.color, ThemeData.dark.color)}
             _hover={{
