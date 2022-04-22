@@ -21,10 +21,11 @@ import ThemeToggleButton from "../../ui/theme-toggle-button";
 import Logo from "../../ui/logo";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import React from "react";
+import { ThemeData } from "../../../utils/constants";
 
 const LinkItem = ({ href, path, target, children, ...props }) => {
   const active = path === href;
-  const inactiveColor = useColorModeValue("gray100", "whiteAlpha.900");
+  const inactiveColor = useColorModeValue(ThemeData.light.color, ThemeData.dark.color);
   return (
     <NextLink href={href} passHref scroll={false}>
       <Link
@@ -32,7 +33,7 @@ const LinkItem = ({ href, path, target, children, ...props }) => {
         size="m"
         fontSize="lg"
         _hover={{
-          color: useColorModeValue("orange", "purple.500"),
+          color: useColorModeValue(ThemeData.light.bg, ThemeData.dark.bg),
           transitionProperty: "color",
           transitionDuration: "0.4s",
           transitionTimingFunction: "ease-out",

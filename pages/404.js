@@ -9,6 +9,8 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
+import { ThemeData } from "../src/utils/constants";
+
 const NotFound = () => {
   return (
     <Container align="center" mt={25}>
@@ -20,9 +22,9 @@ const NotFound = () => {
       <Box my={5} align="center">
         <NextLink href="/" passHref>
           <Button
-            bg={useColorModeValue("orange", "purple.500")}
+            bg={useColorModeValue(ThemeData.light.bg, ThemeData.dark.bg)}
             _hover={{ bg: "" }}
-            color={useColorModeValue("gray200", "whiteAlpha.900")}
+            color={useColorModeValue(ThemeData.light.color, ThemeData.dark.color)}
           >
             Go back home
           </Button>
