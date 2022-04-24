@@ -8,7 +8,10 @@ body {
   padding: 0;
   margin: 0;
   position: relative;
-  min-height: 100%;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 a {
