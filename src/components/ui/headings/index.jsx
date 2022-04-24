@@ -1,12 +1,11 @@
-import { VStack, Heading } from "@chakra-ui/react";
+import { VStack, Heading, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
 import useDencrypt from "use-dencrypt-effect";
-import AnimatedLoopText from "../animated-loop-text";
 
 const Greeting = () => {
   const { result, dencrypt } = useDencrypt();
   useEffect(() => {
-    dencrypt("Hi,");
+    dencrypt("Hi");
   });
   return (
     <Heading as="h2" fontSize="5xl">
@@ -18,7 +17,7 @@ const Greeting = () => {
 const Intro = () => {
   const { result, dencrypt } = useDencrypt();
   useEffect(() => {
-    dencrypt("I'm Daro,");
+    dencrypt("I'm Daro");
   });
   return (
     <Heading as="h2" fontSize="5xl">
@@ -30,7 +29,7 @@ const Intro = () => {
 const Job = () => {
   const { result, dencrypt } = useDencrypt();
   useEffect(() => {
-    dencrypt("web developer");
+    dencrypt("Web Developer");
   });
   return (
     <Heading as="h3" fontSize="4xl">
@@ -39,13 +38,34 @@ const Job = () => {
   );
 };
 
+const FrontEndText = () => {
+  const { result, dencrypt } = useDencrypt();
+  useEffect(() => {
+    dencrypt("Front-end Developer");
+  });
+  return (
+    <Text fontSize="xl" as="s">
+      {result}
+    </Text>
+  );
+};
+
+const BackEndText = () => {
+  const { result, dencrypt } = useDencrypt();
+  useEffect(() => {
+    dencrypt("Back-end Developer");
+  });
+  return <Text fontSize="xl">{result}</Text>;
+};
+
 const Headings = () => {
   return (
-    <VStack alignItems="flex-start" w="full" h="full" spacing={5}>
+    <VStack alignItems="flex-start" w="full" h="full" spacing={4}>
       <Greeting />
       <Intro />
       <Job />
-      <AnimatedLoopText />
+      <FrontEndText />
+      <BackEndText />
     </VStack>
   );
 };

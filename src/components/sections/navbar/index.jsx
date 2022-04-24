@@ -1,65 +1,112 @@
 import {
-  Container,
-  Box,
+  HStack,
+  VStack,
   Flex,
-  Stack,
-  Heading,
+  useDisclosure,
+  IconButton,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerBody,
+  DrawerHeader,
 } from "@chakra-ui/react";
 import ThemeToggleButton from "../../ui/theme-toggle-button";
 import Logo from "../../ui/logo";
 import React from "react";
-import MobileNavbar from "../mobile-navbar";
 import LinkItem from "../../ui/link-item";
+import { HamburgerIcon } from "@chakra-ui/icons";
+
+const NavItems = [
+  {
+    label: "About",
+    href: "/about",
+  },
+  {
+    label: "Work",
+    href: "/work",
+  },
+  {
+    label: "Blog",
+    href: "/blog",
+  },
+];
+
+const DesktopNav = ({ path }) => {
+  return (
+    <>
+      <Logo />
+      <HStack as="nav" spacing="5" display={{ base: "none", md: "flex" }}>
+        {NavItems.map((item, i) => (
+          <LinkItem key={i} href={item.href} path={path}>
+            {item.label}
+          </LinkItem>
+        ))}
+      </HStack>
+    </>
+  );
+};
+
+const MobileNav = ({ path }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef;
+  return (
+    <Flex display={{ base: "flex", md: "none" }}>
+      <IconButton
+        bg=""
+        icon={<HamburgerIcon w={6} h={6} />}
+        variant="none"
+        aria-label="Options"
+        onClick={onOpen}
+      />
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        size="xs"
+        finalFocusRef={btnRef}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader></DrawerHeader>
+          <DrawerBody>
+            <VStack alignItems="left">
+              {NavItems.map((item, i) => (
+                <LinkItem
+                  key={i}
+                  href={item.href}
+                  onClick={onClose}
+                  path={path}
+                >
+                  {item.label}
+                </LinkItem>
+              ))}
+            </VStack>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </Flex>
+  );
+};
 
 const NavBar = (props) => {
-  const { path } = props;
-
   return (
-    <Box
-      position="fixed"
-      as="nav"
+    <Flex
       w="100%"
+      px={4}
+      py={5}
+      align="center"
+      justify="space-between"
       css={{ backdropFilter: "blur(10px)" }}
       zIndex={1}
-      {...props}
     >
-      <Container
-        display="flex"
-        p={2}
-        maxW="container.sm"
-        wrap="wrap"
-        align="center"
-        justify="space-between"
-      >
-        <Flex align="center" mr={5}>
-          <Heading as="h1" size="lg" letterSpacing={"tighter"}>
-            <Logo />
-          </Heading>
-        </Flex>
-        <Stack
-          direction={{ base: "column", md: "row" }}
-          display={{ base: "none", md: "flex" }}
-          width={{ base: "full", md: "auto" }}
-          alignItems="center"
-          flexGrow={1}
-          mt={{ base: 4, md: 0 }}
-        >
-          <LinkItem href="/about" path={path}>
-            About
-          </LinkItem>
-          <LinkItem href="/work" path={path}>
-            Work
-          </LinkItem>
-          <LinkItem href="/blog" path={path}>
-            Blog
-          </LinkItem>
-        </Stack>
-        <Box flex={1} align="right">
-          <ThemeToggleButton />
-          <MobileNavbar />
-        </Box>
-      </Container>
-    </Box>
+      <DesktopNav />
+      <HStack>
+        <ThemeToggleButton />
+        <MobileNav />
+      </HStack>
+    </Flex>
   );
 };
 

@@ -3,14 +3,14 @@ import { IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
 import { ThemeData } from "../../../utils/constants";
-import { changeCursorColor, changeAvatar } from "../../../redux/slices/themeSlice";
+import { changeCursorColor, changeBgColor } from "../../../redux/slices/themeSlice";
 
 const ThemeToggleButton = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const dispatch = useDispatch();
   const switchTheme = () => {
+    dispatch(changeBgColor(colorMode));
     dispatch(changeCursorColor(colorMode));
-    dispatch(changeAvatar(colorMode));
   }
 
   return (
@@ -22,7 +22,6 @@ const ThemeToggleButton = () => {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 20, opacity: 0 }}
         transition={{ duration: 0.1 }}
-        whileHover={{ scale: 1.2 }}
       >
         <IconButton
           aria-label="Toggle Theme"
