@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { Text, useColorModeValue, Image } from "@chakra-ui/react";
 import styled from "@emotion/styled";
+import { ThemeData } from "../../../utils/constants";
 
 const LogoBox = styled.span`
   display: inline-flex;
@@ -15,22 +16,21 @@ const LogoBox = styled.span`
   }
 
   &:hover img {
-    transform: rotateY(360deg);
+    transform: rotate(20deg);
   }
 `;
 
 const Logo = () => {
-  const dogeCoinImg = "/images/dogecoin.png";
-
+  const logo = `/images/${useColorModeValue(ThemeData.light.logo, ThemeData.dark.logo)}.png`;
   return (
     <Link href="/" scroll={false}>
       <a>
         <LogoBox>
-          <Image src={dogeCoinImg} boxSize={25} alt="logo" />
+          <Image src={logo} boxSize="20px" alt="logo" />
           <Text
-            color={useColorModeValue("gray.800", "whiteAlpha.900")}
+            color={useColorModeValue(ThemeData.light.color, ThemeData.dark.color)}
             _hover={{
-              color: useColorModeValue("orange", "purple.500"),
+              color: useColorModeValue(ThemeData.light.bg, ThemeData.dark.bg),
               transitionProperty: "color",
               transitionDuration: "0.4s",
               transitionTimingFunction: "ease-out",

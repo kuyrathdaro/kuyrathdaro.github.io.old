@@ -19,6 +19,14 @@ const components = {
     baseStyle: () => ({
       textUnderlineOffset: 3,
     }),
+  },
+  Modal: {
+    baseStyle: {
+      dialog: {
+        maxHeight: "calc(100vh - 50px)",
+        overflowY: "auto",
+      }
+    }
   }
 };
 
