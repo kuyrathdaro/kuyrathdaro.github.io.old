@@ -3,7 +3,10 @@ import { IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
 import { ThemeData } from "../../../utils/constants";
-import { changeCursorColor, changeBgColor } from "../../../redux/slices/themeSlice";
+import {
+  changeCursorColor,
+  changeBgColor,
+} from "../../../redux/slices/themeSlice";
 
 const ThemeToggleButton = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -11,7 +14,7 @@ const ThemeToggleButton = () => {
   const switchTheme = () => {
     dispatch(changeBgColor(colorMode));
     dispatch(changeCursorColor(colorMode));
-  }
+  };
 
   return (
     <AnimatePresence exitBeforeEnter initial={false}>
