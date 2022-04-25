@@ -10,35 +10,62 @@ import {
   DrawerCloseButton,
   DrawerBody,
   DrawerHeader,
+  Text,
+  Box,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import ThemeToggleButton from "../../ui/theme-toggle-button";
-import Logo from "../../ui/logo";
 import React from "react";
 import LinkItem from "../../ui/link-item";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { changeLabel, selectLabel } from "../../../redux/slices/navbarSlice";
+import { ThemeData } from "../../../utils/constants";
 
 const NavItems = [
   {
-    label: "About",
+    label: ".is()",
+    href: "/",
+  },
+  {
+    label: ".about()",
     href: "/about",
   },
   {
-    label: "Work",
+    label: ".work()",
     href: "/work",
   },
   {
-    label: "Blog",
+    label: ".blog()",
     href: "/blog",
   },
 ];
 
 const DesktopNav = ({ path }) => {
+  const label = useSelector(selectLabel);
+  const dispatch = useDispatch();
+  const switchLabel = (text) => {
+    dispatch(changeLabel(text));
+  };
   return (
     <>
-      <Logo />
+      <Box width="100px">
+        <Text
+          fontSize="lg"
+          fontWeight="bold"
+          color={useColorModeValue(ThemeData.light.bg, ThemeData.dark.bg)}
+        >
+          {label}
+        </Text>
+      </Box>
       <HStack as="nav" spacing="5" display={{ base: "none", md: "flex" }}>
         {NavItems.map((item, i) => (
-          <LinkItem key={i} href={item.href} path={path}>
+          <LinkItem
+            onClick={() => switchLabel(item.label)}
+            key={i}
+            href={item.href}
+            path={path}
+          >
             {item.label}
           </LinkItem>
         ))}
@@ -50,6 +77,10 @@ const DesktopNav = ({ path }) => {
 const MobileNav = ({ path }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef;
+  const dispatch = useDispatch();
+  const switchLabel = (text) => {
+    dispatch(changeLabel(text));
+  };
   return (
     <Flex display={{ base: "flex", md: "none" }}>
       <IconButton
@@ -76,7 +107,10 @@ const MobileNav = ({ path }) => {
                 <LinkItem
                   key={i}
                   href={item.href}
-                  onClick={onClose}
+                  onClick={() => {
+                    onClose();
+                    switchLabel(item.label);
+                  }}
                   path={path}
                 >
                   {item.label}

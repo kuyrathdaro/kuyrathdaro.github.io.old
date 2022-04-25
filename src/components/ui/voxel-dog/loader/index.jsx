@@ -16,8 +16,10 @@ const VoxelDogSpinner = () => (
 const VoxelDogContainer = forwardRef(({ children }, ref) => (
   <Box
     ref={ref}
-    className="avatar"
+    className="voxel-dog"
     m="auto"
+    mt={["-20px", "-60px", "-120px"]}
+    mb={["-40px", "-140px", "-200px"]}
     w={[280, 480, 640]}
     h={[280, 480, 640]}
     position="relative"
@@ -25,7 +27,7 @@ const VoxelDogContainer = forwardRef(({ children }, ref) => (
     {children}
   </Box>
 ));
-VoxelDogContainer.displayName = 'VoxelDogContainer';
+VoxelDogContainer.displayName = "VoxelDogContainer";
 
 const VoxelDogLoader = () => {
   return (
@@ -33,7 +35,7 @@ const VoxelDogLoader = () => {
       <VoxelDogSpinner />
     </VoxelDogContainer>
   );
-}
+};
 
-export { VoxelDogContainer, VoxelDogSpinner};
+export { VoxelDogContainer, VoxelDogSpinner };
 export default VoxelDogLoader;

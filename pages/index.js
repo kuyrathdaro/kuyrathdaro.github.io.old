@@ -6,7 +6,7 @@ import Ads from "../src/components/ui/ads";
 
 const Home = () => {
   return (
-    <Layout title="Home - Rathdaro Kuy">
+    <Layout title="daro.is">
       <Container maxWidth="container.md">
         <Ads />
       </Container>
