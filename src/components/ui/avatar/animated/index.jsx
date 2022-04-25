@@ -2,6 +2,7 @@ import { OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import Model from "../../../../utils/animated-avatar-model";
+import { Spinner } from "@chakra-ui/react";
 
 const AnimatedAvatar = () => {
   return (
@@ -15,7 +16,7 @@ const AnimatedAvatar = () => {
       <ambientLight intensity={1.25} />
       <ambientLight intensity={0.1} />
       <directionalLight intensity={0.4} />
-      <Suspense fallback={null}>
+      <Suspense fallback={<Spinner size="xl"/>}>
         <Model position={[0.025, -0.9, 0]} />
       </Suspense>
       <OrbitControls enableZoom={false} />
