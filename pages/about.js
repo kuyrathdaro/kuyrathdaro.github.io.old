@@ -1,16 +1,12 @@
 import Layout from "../src/components/layouts/content";
-import dynamic from "next/dynamic";
-import VoxelDog from "../src/components/ui/voxel-dog";
-
-const LazyVoxelDog = dynamic(() => import("../src/components/ui/voxel-dog"), {
-  ssr: false,
-  loading: () => <VoxelDog />,
-});
+import { Container } from "@chakra-ui/react";
 
 const About = () => {
   return (
-    <Layout title="About">
-      Coming soon
+    <Layout title="daro.about">
+      <Container maxWidth="container.md">
+        <p>Coming soon</p>
+      </Container>
     </Layout>
   );
 };
