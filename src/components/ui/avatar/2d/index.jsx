@@ -1,4 +1,11 @@
-import { IconButton, Image, ModalFooter, useColorModeValue, useDisclosure } from "@chakra-ui/react";
+import {
+  IconButton,
+  Image,
+  ModalFooter,
+  Spinner,
+  useColorModeValue,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { ThemeData } from "../../../../utils/constants";
 import { motion } from "framer-motion";
 import Avatar3D from "../3d";
@@ -13,24 +20,31 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AnimatedAvatar from "../animated";
 
 const LazyAvatar3D = dynamic(() => import("../3d"), {
   ssr: false,
-  loading: () => <Avatar3D />
+  loading: () => <Avatar3D />,
 });
 
 const LazyAnimatedAvatar = dynamic(() => import("../animated"), {
   ssr: false,
-  loading: () => <AnimatedAvatar />
-})
+  loading: () => <AnimatedAvatar />,
+});
 
 const Avatar2D = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const avatarImg = `/images/avatar.png`;
-  const [ isAnimated, setAnimate] = useState(false);
-  const color = useColorModeValue(ThemeData.light.bg_hex, ThemeData.dark.bg_hex);
+  const [isAnimated, setAnimate] = useState(false);
+  const bgColor = useColorModeValue(
+    ThemeData.light.bg_hex,
+    ThemeData.dark.bg_hex
+  );
+  const color = useColorModeValue(
+    ThemeData.light.color,
+    ThemeData.dark.color
+  )
   return (
     <>
       <Image
@@ -40,7 +54,7 @@ const Avatar2D = () => {
         boxSize={320}
         alt="avatar"
         borderRadius="50%"
-        backgroundColor={color}
+        backgroundColor={bgColor}
         whileHover={{
           cursor: "pointer",
           borderRadius: "20%",
@@ -52,24 +66,34 @@ const Avatar2D = () => {
         }}
         onClick={onOpen}
       />
-      <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-      >
+      <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>
-            { isAnimated == true && "Shooting through your ❤️"}
-            { isAnimated == false && "3D View"}
+            {isAnimated === false ? "3D View" : "Shooting through your ❤️"}
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody align="center">
-            { isAnimated == false && (<LazyAvatar3D />)}
-            { isAnimated == true && (<LazyAnimatedAvatar />) }
+            {isAnimated === false ? <LazyAvatar3D /> : <LazyAnimatedAvatar />}
           </ModalBody>
           <ModalFooter>
-            { isAnimated == false && (<IconButton onClick={() => setAnimate(true)} _hover="" bg="" aria-label="animate" icon={<GiPiercedHeart color={color} size="40px"/>}/>)}
-            { isAnimated == true && (<IconButton onClick={() => setAnimate(false)} _hover="" bg="" aria-label="animate" icon={<GiPerson color={color} size="40px"/>}/>)}
+            {isAnimated === false ? (
+              <IconButton
+                onClick={() => setAnimate(true)}
+                bg=""
+                _hover={{color: bgColor}}
+                aria-label="animate"
+                icon={<GiPiercedHeart color={color} size="40px" />}
+              />
+            ) : (
+              <IconButton
+                onClick={() => setAnimate(false)}
+                _hover={{color: bgColor}}
+                bg=""
+                aria-label="animate"
+                icon={<GiPerson color={color} size="40px" />}
+              />
+            )}
           </ModalFooter>
         </ModalContent>
       </Modal>
