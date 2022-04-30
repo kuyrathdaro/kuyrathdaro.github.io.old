@@ -13,6 +13,7 @@ import {
   Text,
   Box,
   useColorModeValue,
+  chakra,
 } from "@chakra-ui/react";
 import ThemeToggleButton from "../../ui/theme-toggle-button";
 import React from "react";
@@ -21,6 +22,8 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { changeLabel, selectLabel } from "../../../redux/slices/navbarSlice";
 import { ThemeData } from "../../../utils/constants";
+import { motion, isValidMotionProp, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const NavItems = [
   {
@@ -41,6 +44,46 @@ const NavItems = [
   },
 ];
 
+const ChakraBox = chakra(motion.div, isValidMotionProp);
+
+const variants = {
+  hidden: {
+    x: "-100%",
+    transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 },
+  },
+  visible: {
+    x: 0,
+    transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.75 },
+  },
+};
+
+const Brand = ({ children }) => {
+  const [state, setState] = useState(1);
+  useEffect(() => {
+    setInterval(() => {
+      setState(1)
+    }, 1000);
+    },[]);
+  return (
+    <AnimatePresence key={state}>
+      <ChakraBox
+        width="100px"
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+      >
+        <Text
+          fontSize="lg"
+          fontWeight="bold"
+          color={useColorModeValue(ThemeData.light.bg, ThemeData.dark.bg)}
+        >
+          {children}
+        </Text>
+      </ChakraBox>
+    </AnimatePresence>
+  );
+};
+
 const DesktopNav = ({ path }) => {
   const label = useSelector(selectLabel);
   const dispatch = useDispatch();
@@ -49,15 +92,7 @@ const DesktopNav = ({ path }) => {
   };
   return (
     <>
-      <Box width="100px">
-        <Text
-          fontSize="lg"
-          fontWeight="bold"
-          color={useColorModeValue(ThemeData.light.bg, ThemeData.dark.bg)}
-        >
-          {label}
-        </Text>
-      </Box>
+      <Brand>{label}</Brand>
       <HStack as="nav" spacing="5" display={{ base: "none", md: "flex" }}>
         {NavItems.map((item, i) => (
           <LinkItem
