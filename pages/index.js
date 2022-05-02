@@ -7,7 +7,7 @@ import Ads from "../src/components/ui/ads";
 const Home = () => {
   return (
     <Layout title="daro.is">
-      <Container maxWidth="container.md">
+      <Container maxWidth="container.md" mt={10}>
         <Ads />
       </Container>
       <Container my={5} maxWidth="container.md">
