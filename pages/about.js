@@ -8,15 +8,24 @@ import {
   HStack,
   Link,
   useColorModeValue,
-  Image,
+  Stack,
 } from "@chakra-ui/react";
 import data from "../public/data/about.json";
 import { GrLinkedin, GrTwitter, GrGithub } from "react-icons/gr";
 import { FiInstagram } from "react-icons/fi";
 import { ThemeData } from "../src/utils/constants";
-import Script from "next/script";
+import TryHackMe from "../src/components/ui/tryhackme";
+import HackTheBox from "../src/components/ui/hackthebox";
+import SkillBars from "../src/components/ui/skillbars";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { changeLabel } from "../src/redux/slices/navbarSlice";
 
 const About = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(changeLabel(".about()"));
+  })
   const color = useColorModeValue(ThemeData.light.bg, ThemeData.dark.bg);
   return (
     <Layout title="daro.about">
@@ -60,7 +69,8 @@ const About = () => {
         <SimpleGrid columns={[1, null, 2]} spacing={10} mb={10}>
           {data.skills.map((item, key) => (
             <Box key={key}>
-              <Text>{item.name}</Text>
+              <Text>{item.type}</Text>
+              <SkillBars level={item.level} bgColor={color}/>
             </Box>
           ))}
         </SimpleGrid>
@@ -86,8 +96,10 @@ const About = () => {
             <Text key={key}>{item.name}</Text>
           ))}
         </SimpleGrid>
-        <SimpleGrid columns={[1, null, 2]} mb={10}>
-        </SimpleGrid>
+        <Stack direction={["column", "row"]} align="center" spacing={5} mb={10}>
+          <TryHackMe />
+          <HackTheBox />
+        </Stack>
       </Container>
     </Layout>
   );

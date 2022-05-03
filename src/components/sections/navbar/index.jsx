@@ -21,8 +21,8 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 import { ThemeData } from "../../../utils/constants";
 import { motion, isValidMotionProp, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { changeLabel, selectLabel } from "../../../redux/slices/navbarSlice";
+import { useSelector } from "react-redux";
+import { selectLabel } from "../../../redux/slices/navbarSlice";
 
 const NavItems = [
   {
@@ -47,7 +47,7 @@ const ChakraBox = chakra(motion.div, isValidMotionProp);
 
 const variants = {
   hidden: {
-    x: "-100%",
+    x: "-400%",
     transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 },
   },
   visible: {
@@ -83,10 +83,6 @@ const NavBar = ({path}) => {
   const [randomkey, setRandomKey] = useState(Math.random());
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef;
-  const dispatch = useDispatch();
-  const switchLabel = (text) => {
-    dispatch(changeLabel(text));
-  }
   return (
     <Flex
       w="100%"
@@ -102,7 +98,6 @@ const NavBar = ({path}) => {
         {NavItems.map((item, key) => (
           <LinkItem
             onClick={() => {
-              switchLabel(item.label);
               setRandomKey(Math.random());
             }}
             key={key}
@@ -142,7 +137,6 @@ const NavBar = ({path}) => {
                       key={key}
                       onClick={() => {
                         onClose();
-                        switchLabel(item.label);
                         setRandomKey(Math.random());
                       }}
                       path={path}
