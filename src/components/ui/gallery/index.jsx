@@ -1,17 +1,18 @@
 import ImageGallery from "react-image-gallery";
 import { ImageList } from "../../../utils/constants";
 
-const SlideShow = () => {
+const Gallery = () => {
   return (
     <ImageGallery
       items={ImageList}
       autoPlay={true}
-      showFullscreenButton={false}
-      showThumbnails={false}
-      showPlayButton={false}
-      showNav={false}
+      showFullscreenButton={true}
+      showThumbnails={true}
+      showPlayButton={true}
+      showNav={true}
+      showBullets={true}
     />
   );
 };
 
-export default SlideShow;
+export default Gallery;
