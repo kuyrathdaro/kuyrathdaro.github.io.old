@@ -41,7 +41,7 @@ const Job = () => {
 const FrontEndText = () => {
   const { result, dencrypt } = useDencrypt();
   useEffect(() => {
-    dencrypt("Front-end Developer");
+    dencrypt("Frontend Developer");
   });
   return (
     <Text fontSize="xl" as="s">
@@ -53,7 +53,7 @@ const FrontEndText = () => {
 const BackEndText = () => {
   const { result, dencrypt } = useDencrypt();
   useEffect(() => {
-    dencrypt("Back-end Developer");
+    dencrypt("Backend Developer");
   });
   return <Text fontSize="xl">{result}</Text>;
 };

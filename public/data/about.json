@@ -1,0 +1,67 @@
+{
+    "skills": [
+        {
+            "type": "PHP",
+            "level": 8
+        },
+        {
+            "type": "HTML, CSS & JS",
+            "level": 7
+        },
+        {
+            "type": "TypeScript",
+            "level": 4
+        },
+        {
+            "type": "Laravel",
+            "level": 6
+        },
+        {
+            "type": "Node.js",
+            "level": 8
+        },
+        {
+            "type": "Cybersecurity",
+            "level": 6
+        },
+        {
+            "type": "React",
+            "level": 5
+        },
+        {
+            "type": "Flutter",
+            "level": 3
+        }
+    ],
+    "experience": [
+        {
+            "company": "OPTISTECH",
+            "position": "Backend Developer",
+            "date": "Oct 2021 - now"
+        },
+        {
+            "company": "PRINCE BANK",
+            "position": "Information Security Intern",
+            "date": "Jul - Sep 2021"
+        },
+        {
+            "company": "ALLWEB",
+            "position": "PHP Developer",
+            "date": "2017 - 2021"
+        }
+    ],
+    "hobbies": [
+        {
+            "name": "🔎 Doing a research"
+        },
+        {
+            "name": "🎧 Listening to music"
+        },
+        {
+            "name": "📖 Reading books"
+        },
+        {
+            "name": "🎬 Watching movies"
+        }
+    ]
+}
