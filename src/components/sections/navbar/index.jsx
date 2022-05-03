@@ -11,16 +11,18 @@ import {
   DrawerBody,
   DrawerHeader,
   Text,
-  Box,
   useColorModeValue,
+  chakra,
 } from "@chakra-ui/react";
 import ThemeToggleButton from "../../ui/theme-toggle-button";
 import React from "react";
 import LinkItem from "../../ui/link-item";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { useDispatch, useSelector } from "react-redux";
-import { changeLabel, selectLabel } from "../../../redux/slices/navbarSlice";
 import { ThemeData } from "../../../utils/constants";
+import { motion, isValidMotionProp, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectLabel } from "../../../redux/slices/navbarSlice";
 
 const NavItems = [
   {
@@ -41,15 +43,30 @@ const NavItems = [
   },
 ];
 
-const DesktopNav = ({ path }) => {
+const ChakraBox = chakra(motion.div, isValidMotionProp);
+
+const variants = {
+  hidden: {
+    x: "-400%",
+    transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 },
+  },
+  visible: {
+    x: 0,
+    transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.75 },
+  },
+};
+
+const Brand = (props) => {
   const label = useSelector(selectLabel);
-  const dispatch = useDispatch();
-  const switchLabel = (text) => {
-    dispatch(changeLabel(text));
-  };
   return (
-    <>
-      <Box width="100px">
+    <AnimatePresence>
+      <ChakraBox
+        width="100px"
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+        key={props.randomkey}
+      >
         <Text
           fontSize="lg"
           fontWeight="bold"
@@ -57,74 +74,15 @@ const DesktopNav = ({ path }) => {
         >
           {label}
         </Text>
-      </Box>
-      <HStack as="nav" spacing="5" display={{ base: "none", md: "flex" }}>
-        {NavItems.map((item, i) => (
-          <LinkItem
-            onClick={() => switchLabel(item.label)}
-            key={i}
-            href={item.href}
-            path={path}
-          >
-            {item.label}
-          </LinkItem>
-        ))}
-      </HStack>
-    </>
+      </ChakraBox>
+    </AnimatePresence>
   );
 };
 
-const MobileNav = ({ path }) => {
+const NavBar = ({path}) => {
+  const [randomkey, setRandomKey] = useState(Math.random());
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef;
-  const dispatch = useDispatch();
-  const switchLabel = (text) => {
-    dispatch(changeLabel(text));
-  };
-  return (
-    <Flex display={{ base: "flex", md: "none" }}>
-      <IconButton
-        bg=""
-        icon={<HamburgerIcon w={6} h={6} />}
-        variant="none"
-        aria-label="Options"
-        onClick={onOpen}
-      />
-      <Drawer
-        isOpen={isOpen}
-        placement="right"
-        onClose={onClose}
-        size="xs"
-        finalFocusRef={btnRef}
-      >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader></DrawerHeader>
-          <DrawerBody>
-            <VStack alignItems="left">
-              {NavItems.map((item, i) => (
-                <LinkItem
-                  key={i}
-                  href={item.href}
-                  onClick={() => {
-                    onClose();
-                    switchLabel(item.label);
-                  }}
-                  path={path}
-                >
-                  {item.label}
-                </LinkItem>
-              ))}
-            </VStack>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
-    </Flex>
-  );
-};
-
-const NavBar = (props) => {
   return (
     <Flex
       w="100%"
@@ -135,10 +93,62 @@ const NavBar = (props) => {
       css={{ backdropFilter: "blur(10px)" }}
       zIndex={1}
     >
-      <DesktopNav />
+      <Brand randomkey={randomkey}/>
+      <HStack as="nav" spacing="5" display={{ base: "none", md: "flex" }}>
+        {NavItems.map((item, key) => (
+          <LinkItem
+            onClick={() => {
+              setRandomKey(Math.random());
+            }}
+            key={key}
+            href={item.href}
+            path={path}
+          >
+            {item.label}
+          </LinkItem>
+        ))}
+      </HStack>
       <HStack>
         <ThemeToggleButton />
-        <MobileNav />
+        <Flex display={{ base: "flex", md: "none" }}>
+          <IconButton
+            bg=""
+            icon={<HamburgerIcon w={6} h={6} />}
+            variant="none"
+            aria-label="Options"
+            onClick={onOpen}
+          />
+          <Drawer
+            isOpen={isOpen}
+            placement="right"
+            onClose={onClose}
+            size="xs"
+            finalFocusRef={btnRef}
+          >
+            <DrawerOverlay />
+            <DrawerContent>
+              <DrawerCloseButton />
+              <DrawerHeader></DrawerHeader>
+              <DrawerBody>
+                <VStack alignItems="left">
+                  {NavItems.map((item, key) => (
+                    <LinkItem
+                      href={item.href}
+                      key={key}
+                      onClick={() => {
+                        onClose();
+                        setRandomKey(Math.random());
+                      }}
+                      path={path}
+                    >
+                      {item.label}
+                    </LinkItem>
+                  ))}
+                </VStack>
+              </DrawerBody>
+            </DrawerContent>
+          </Drawer>
+        </Flex>
       </HStack>
     </Flex>
   );
