@@ -5,32 +5,36 @@
             "level": 8
         },
         {
-            "type": "HTML, CSS & JS",
-            "level": 7
+            "type": "Node.js",
+            "level": 8
         },
         {
-            "type": "TypeScript",
-            "level": 4
+            "type": "HTML, CSS & JS",
+            "level": 7
         },
         {
             "type": "Laravel",
             "level": 6
         },
         {
-            "type": "Node.js",
-            "level": 8
-        },
-        {
-            "type": "Cybersecurity",
+            "type": "Python",
             "level": 6
         },
         {
-            "type": "React",
+            "type": "Cybersecurity",
             "level": 5
+        },
+        {
+            "type": "React",
+            "level": 4
         },
         {
             "type": "Flutter",
             "level": 3
+        },
+        {
+            "type": "TypeScript",
+            "level": 5
         }
     ],
     "experience": [
