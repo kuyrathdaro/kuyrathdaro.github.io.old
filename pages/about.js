@@ -61,7 +61,7 @@ const About = () => {
           </Link>
         </HStack>
         <Text mb={10}>
-          I am a web developer, backend developer. From Cambodia, Phnom Penh
+          I am a web developer, backend developer. From Phnom Penh, Cambodia.
         </Text>
         <Heading as="h3" fontSize="2xl" mb={5}>
           Main skills
