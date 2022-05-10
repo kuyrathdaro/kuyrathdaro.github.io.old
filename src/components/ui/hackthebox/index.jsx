@@ -1,12 +1,10 @@
 import { Image, Link } from "@chakra-ui/react";
+import { HTB_PROFILE_URL, HTB_IMAGE_URL } from "../../../utils/constants";
 
 const HackTheBox = () => {
   return (
-    <Link href="https://www.hackthebox.com/profile/129404" isExternal>
-      <Image
-        src="http://www.hackthebox.eu/badge/image/129404"
-        alt="Hack The Box"
-      />
+    <Link href={HTB_PROFILE_URL} isExternal>
+      <Image src={HTB_IMAGE_URL} alt="Hack The Box" />
     </Link>
   );
 };
