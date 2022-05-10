@@ -63,3 +63,10 @@ export const ImageList = [
     thumbnail: '/images/gallery/image-10.jpg'
   }
 ]
+
+export const HTB_SCRIPT_URL='https://www.hackthebox.eu/badge/129404'
+export const HTB_PROFILE_URL='https://app.hackthebox.com/profile/129404'
+export const HTB_IMAGE_URL='http://www.hackthebox.eu/badge/image/129404'
+export const THM_SCRIPT_URL='https://tryhackme.com/badge/26011'
+export const THM_PROFILE_URL='https://tryhackme.com/p/0xdaro'
+export const THM_IMAGE_URL='https://tryhackme-badges.s3.amazonaws.com/0xdaro.png'
