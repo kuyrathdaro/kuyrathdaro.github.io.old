@@ -1,12 +1,10 @@
 import { Image, Link } from "@chakra-ui/react";
+import { THM_PROFILE_URL, THM_IMAGE_URL } from "../../../utils/constants";
 
 export default function TryHackMe() {
   return (
-    <Link href="https://tryhackme.com/p/0xdaro" isExternal>
-      <Image
-        src="https://tryhackme-badges.s3.amazonaws.com/0xdaro.png"
-        alt="TryHackMe"
-      />
+    <Link href={THM_PROFILE_URL} isExternal>
+      <Image src={THM_IMAGE_URL} alt="TryHackMe" />
     </Link>
   );
 }
