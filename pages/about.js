@@ -13,7 +13,7 @@ import {
 import data from "../public/data/about.json";
 import { GrLinkedin, GrTwitter, GrGithub } from "react-icons/gr";
 import { FiInstagram } from "react-icons/fi";
-import { ThemeData } from "../src/utils/constants";
+import { INSTAGRAM_URL, LINKEDIN_URL, GITHUB_URL, TWITTER_URL, ThemeData } from "../src/utils/constants";
 import TryHackMe from "../src/components/ui/tryhackme";
 import HackTheBox from "../src/components/ui/hackthebox";
 import SkillBars from "../src/components/ui/skillbars";
@@ -32,28 +32,28 @@ const About = () => {
       <Container maxWidth="container.md" mt={10}>
         <HStack spacing="15px" mb={10}>
           <Link
-            href="https://linkedin.com/in/kuyrathdaro"
+            href={LINKEDIN_URL}
             isExternal
             _hover={{ color: color }}
           >
             <GrLinkedin size="25px" />
           </Link>
           <Link
-            href="https://github.com/kuyrathdaro"
+            href={GITHUB_URL}
             isExternal
             _hover={{ color: color }}
           >
             <GrGithub size="25px" />
           </Link>
           <Link
-            href="https://twitter.com/0xdaro"
+            href={TWITTER_URL}
             isExternal
             _hover={{ color: color }}
           >
             <GrTwitter size="25px" />
           </Link>
           <Link
-            href="https://instagram.com/rathdaro/"
+            href={INSTAGRAM_URL}
             isExternal
             _hover={{ color: color }}
           >
