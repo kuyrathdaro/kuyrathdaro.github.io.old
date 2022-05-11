@@ -70,3 +70,8 @@ export const HTB_IMAGE_URL='http://www.hackthebox.eu/badge/image/129404'
 export const THM_SCRIPT_URL='https://tryhackme.com/badge/26011'
 export const THM_PROFILE_URL='https://tryhackme.com/p/0xdaro'
 export const THM_IMAGE_URL='https://tryhackme-badges.s3.amazonaws.com/0xdaro.png'
+
+export const TWITTER_URL='https://twitter.com/0xdaro'
+export const LINKEDIN_URL='https://linkedin.com/in/kuyrathdaro'
+export const GITHUB_URL='https://github.com/kuyrathdaro'
+export const INSTAGRAM_URL='https://instagram.com/rathdaro/'
