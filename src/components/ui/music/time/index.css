@@ -1,0 +1,5 @@
+.time {
+    color: var(--timeColor);
+    text-align: right;
+    font-size: 30px;
+}

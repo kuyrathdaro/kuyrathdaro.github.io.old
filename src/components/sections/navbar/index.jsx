@@ -41,6 +41,10 @@ const NavItems = [
     label: ".blog()",
     href: "/blog",
   },
+  {
+    label: ".music()",
+    href: "/music"
+  }
 ];
 
 const ChakraBox = chakra(motion.div, isValidMotionProp);
