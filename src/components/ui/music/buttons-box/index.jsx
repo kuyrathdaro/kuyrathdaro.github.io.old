@@ -1,5 +1,7 @@
 import styles from "./index.module.css";
 
-export const ButtonsBox = ({ children }) => {
+const ButtonsBox = ({ children }) => {
   return <div className={styles.wrapper}>{children}</div>;
 };
+
+export default ButtonsBox;

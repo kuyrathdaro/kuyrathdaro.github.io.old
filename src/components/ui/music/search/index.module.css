@@ -1,0 +1,28 @@
+.wrapper {
+    text-align: center;
+}
+
+.search {
+    height: 40px;
+    border: none;
+    font-size: 18px;
+    width: 100%;
+    margin: 0 auto 10px auto;
+    background-color: var(--searchBackground);
+    color: var(--searchText);
+    padding-left: 20px;
+    border-radius: 10px;
+}
+
+.search::placeholder {
+    color: var(--searchPlaceHolder);
+    opacity: 1;
+}
+
+.search:-ms-input-placeholder {
+    color: var(--searchPlaceHolder);
+}
+
+.search::-ms-input-placehoder {
+    color: var(--searchPlaceHolder);
+}

@@ -1,5 +1,7 @@
-import styles from "./index.css";
+import styles from "./index.module.css";
 
-export const Title = ({ title }) => {
-  return <h1 className={styles.title}>{title}</h1>;
+const Title = (props) => {
+  return <h1 className={styles.title}>{props.title}</h1>;
 };
+
+export default Title;

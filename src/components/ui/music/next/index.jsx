@@ -1,21 +1,21 @@
 import styles from "./index.module.css";
 import { Image } from "@chakra-ui/react";
 
-const Play = (props) => {
+const Next = (props) => {
   return (
     <Image
-      className={styles.play}
-      width="60px"
-      height="60px"
+      className={styles.next}
+      width="50px"
+      height="50px"
       src={props.src}
       onClick={props.onClick}
       _hover={{
         cursor: "pointer",
         transform: "scale(1.2)",
       }}
-      alt="play"
+      alt="next"
     />
   );
 };
 
-export default Play;
+export default Next;

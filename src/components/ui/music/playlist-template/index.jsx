@@ -1,5 +1,7 @@
 import styles from "./index.module.css";
 
-export const ButtonsAndVolumeBox = ({ children }) => {
+const PlaylistTemplate = ({ children }) => {
   return <div className={styles.wrapper}>{children}</div>;
 };
+
+export default PlaylistTemplate;

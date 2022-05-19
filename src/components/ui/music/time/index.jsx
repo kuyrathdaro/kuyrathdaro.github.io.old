@@ -1,5 +1,7 @@
-import styles from "./index.css";
+import styles from "./index.module.css";
 
-export const Time = ({ time }) => {
-  return <h1 className={styles.time}>{time}</h1>;
+const Time = (props) => {
+  return <h1 className={styles.time}>{props.time}</h1>;
 };
+
+export default Time;
