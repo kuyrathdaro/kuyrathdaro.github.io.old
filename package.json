@@ -26,6 +26,7 @@
     "react-image-gallery": "^1.2.7",
     "react-redux": "^8.0.1",
     "react-text-loop-next": "0.0.3",
+    "styled-components": "^5.3.5",
     "three": "^0.139.2",
     "use-dencrypt-effect": "^1.0.2"
   },
