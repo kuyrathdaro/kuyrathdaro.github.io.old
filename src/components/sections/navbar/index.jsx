@@ -40,10 +40,6 @@ const NavItems = [
   {
     label: ".blog()",
     href: "/blog",
-  },
-  {
-    label: ".music()",
-    href: "/music"
   }
 ];
 

@@ -1,11 +1,11 @@
 import Layout from "../src/components/layouts/content";
-import { Box, Container, SimpleGrid } from "@chakra-ui/react";
+import { Center, Container, SimpleGrid, Heading } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { changeLabel } from "../src/redux/slices/navbarSlice";
-import Gallery from "../src/components/ui/gallery";
 import data from "../public/data/blog.json";
 import { GridItem } from "../src/components/ui/grid-item";
+import FadingText from "../src/components/ui/fading-text";
 
 const Blog = () => {
   const dispatch = useDispatch();
@@ -15,9 +15,12 @@ const Blog = () => {
   return (
     <Layout title="daro.blog">
       <Container maxWidth="container.md">
-        <Box mb={10}>
-          <Gallery />
-        </Box>
+        <Center mb={10} mt={10}>
+          <Heading>Welcome to my blog!</Heading>
+        </Center>
+        <Center mb={10}>
+          <FadingText />
+        </Center>
         <SimpleGrid columns={[1, 2, 3]} spacing={10}>
           {data.map((item, key) => {
             return (
