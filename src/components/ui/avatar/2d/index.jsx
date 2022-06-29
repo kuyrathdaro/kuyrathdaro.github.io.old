@@ -4,12 +4,13 @@ import {
   ModalFooter,
   useColorModeValue,
   useDisclosure,
+  Text
 } from "@chakra-ui/react";
 import { ThemeData } from "../../../../utils/constants";
 import { motion } from "framer-motion";
 import Avatar3D from "../3d";
 import dynamic from "next/dynamic";
-import { MdLegendToggle } from "react-icons/md";
+import { IoPlay } from "react-icons/io5";
 
 import {
   Modal,
@@ -23,12 +24,10 @@ import { useState } from "react";
 import AnimatedAvatar from "../animated";
 
 const LazyAvatar3D = dynamic(() => import("../3d"), {
-  ssr: false,
   loading: () => <Avatar3D />,
 });
 
 const LazyAnimatedAvatar = dynamic(() => import("../animated"), {
-  ssr: false,
   loading: () => <AnimatedAvatar />,
 });
 
@@ -65,7 +64,6 @@ const Avatar2D = () => {
         <ModalOverlay />
         <ModalContent>
           <ModalHeader fontSize="lg">
-            {isAnimated === false ? "3D View" : "Shooting through your heart"}
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody align="center">
@@ -77,7 +75,7 @@ const Avatar2D = () => {
               bg={bgColor}
               _hover=""
               aria-label="animate"
-              icon={<MdLegendToggle size="20px" />}
+              icon={<IoPlay size="20px"/>}
             />
           </ModalFooter>
         </ModalContent>

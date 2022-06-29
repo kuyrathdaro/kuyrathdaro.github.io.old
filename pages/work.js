@@ -7,7 +7,6 @@ import VoxelDogLoader from "../src/components/ui/voxel-dog/loader";
 import dynamic from "next/dynamic";
 
 const LazyVoxelDog = dynamic(() => import("../src/components/ui/voxel-dog"), {
-  ssr: false,
   loading: () => <VoxelDogLoader />,
 });
 
