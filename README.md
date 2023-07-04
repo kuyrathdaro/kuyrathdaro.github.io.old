@@ -5,7 +5,7 @@ This is my personal portfolio website hobby project.
 First, run the development server:
 
 ```bash
-git clone https://github.com/kuyrathdaro/kuyrathdaro.github.io.git
+git clone https://github.com/kuyrathdaro/kuyrathdaro.github.io-old.git
 
 npm install
 # or
